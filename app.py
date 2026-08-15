@@ -91,15 +91,13 @@ if st.button("🚀 Build & Render Animated Video", type="primary", use_container
                 run_tts_sync(script, audio_path, pitch_str, rate_str)
                 st.audio(audio_path)
 
-            # Stage B: Motion & Expression Rendering (Exact Verified Version)
+            # Stage B: Motion Rendering via LivePortrait Active Hash
             with st.spinner("⏳ Stage 2/2: Rendering Expressions & Lip-Sync on Cloud GPU..."):
                 output = client.run(
-                    "cjwbw/sadtalker:3aa3def1c505b811d650bef241c98042f28d1dd7d23b8bc26162812f862308c0",
+                    "fofr/live-portrait:4206822238497e74880016e788c69f2571216b23a073f1d87ed548f06f527c13",
                     input={
                         "source_image": open(img_path, "rb"),
-                        "driven_audio": open(audio_path, "rb"),
-                        "still": True,
-                        "enhancer": "gfpgan"
+                        "driven_audio": open(audio_path, "rb")
                     }
                 )
                 
